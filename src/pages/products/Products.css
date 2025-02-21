@@ -1,0 +1,14 @@
+.products__wrapper {
+    margin-top: 80px;
+    h2 {
+        margin: 40px 0;
+    }
+}
+
+.products__list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 30px;
+    margin-top: 40px;
+}

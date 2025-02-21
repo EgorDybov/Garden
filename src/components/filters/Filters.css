@@ -1,0 +1,14 @@
+.filters { 
+    display: flex;
+    align-items: center;
+    gap: 40px;
+
+}
+
+.priceFrom, .priceTo {
+    width: 100px;
+}
+
+.priceFrom {
+    margin: 0 20px;
+}

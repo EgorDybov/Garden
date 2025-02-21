@@ -1,0 +1,10 @@
+.sales {
+    margin-top: 40px;
+}
+
+.sales__items {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

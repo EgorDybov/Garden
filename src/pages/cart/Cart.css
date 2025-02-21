@@ -1,0 +1,15 @@
+.cart__navigation {
+    display: flex;
+}
+
+.divider {
+    border-bottom: 1px solid gray;
+    width: 825px;
+    margin-top: 30px;
+}
+
+.cart__navigation__return-arrow {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}

@@ -1,0 +1,16 @@
+.nav__links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    font-weight: 400;
+}
+
+.nav__link {
+    color: #252525;
+    text-decoration: none;
+    
+}
+
+.active-link {
+    color: #379634;
+}

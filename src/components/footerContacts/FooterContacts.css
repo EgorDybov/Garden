@@ -1,0 +1,44 @@
+.footer__contacts__wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer__contacts__title {
+    font-size: 28px;
+}
+
+.footer__contacts__number {
+    font-size: 48px;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+.footer__contacts__apps__intagram, .footer__contacts__apps__telegram {
+    text-align: center;
+}
+
+.footer__contacts__apps {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.footer__contacts__address {
+    font-size: 28px;
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+.footer__contacts__office-hours {
+    margin-top: 20px;
+}
+.footer__contacts__office-hours__title {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.footer__contacts__office-hours__value {
+    font-size: 28px;
+    font-weight: 600;
+}
