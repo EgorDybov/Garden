@@ -20,8 +20,8 @@ export const Products = observer(() => {
                     <Filters/>
                     <div className="products__list">
                         {
-                            productsStore.products.map(() => {
-                                return <Product/>
+                            productsStore.products.map((product) => {
+                                return <Product {...product}/>
                             })
                         }
                     </div>

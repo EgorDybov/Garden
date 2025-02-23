@@ -1,20 +1,40 @@
-import productImg from '../../assets/media/img/product.png'
+import { IProduct } from 'stores/products/types'
+import { BASE_URL, PRODUCTS_URL } from '../../stores/apiPoint'
+import { useMemo } from 'react'
+import { Button, Typography } from 'antd'
+
 import './Product.css'
+import { Link } from 'react-router-dom'
 
+interface IProductProps extends IProduct {}
 
-export const Product = () => {
+export const Product = ({price, discont_price, image, title, id}: IProductProps) => {
+
+    const src = useMemo(() => {
+        return BASE_URL + image
+    }, [image, BASE_URL])
+
+    const sale = useMemo(() => {
+        return  discont_price && (discont_price * 100) / price - 100 
+    }, [price, discont_price])
+
+    const productUrl = useMemo(() => {
+        return PRODUCTS_URL + "/" + id
+    }, [id, PRODUCTS_URL])
+
     return (
         <div className="product">
-            <div className="product__img">
-                <img src={productImg} alt="Secateurs" />
-            </div>
+            <Link to={productUrl} className="product__img">
+                <img src={src} alt="Secateurs" />
+            </Link>
             <div className="product__info">
                 <div className="product__prices">
-                    <span className='product__item__now-price'>500$</span>
-                    <span className='product__item__prev-price'>1000$</span>
-                    <span className='product__item__discount'>-7%</span>
+                    <span className='product__item__now-price'>{price}$</span>
+                    {discont_price && <span className='product__item__prev-price'>{discont_price}$</span>}
+                    {sale && <span className='product__item__discount'>{sale.toFixed(0)}</span>}
                 </div>
-                <p className='product__item__title'>Secateurs</p>
+                <Typography.Paragraph className='product__item__title' ellipsis>{title}</Typography.Paragraph>
+                <Button type='primary'>В корзину</Button>
             </div>
         </div>
     )

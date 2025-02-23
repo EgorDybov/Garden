@@ -18,10 +18,10 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home/>} />
-        <Route path="categories" element={<Categories />}/>
-        <Route path="products" element={<Products/>}/>
+        <Route path="categories/*" element={<Categories />}/>
+        <Route path="products/*" element={<Products/>}/>
+        <Route path="products/:productId" element={<ProductCard/>}/>
         <Route path="cart" element={<Cart/>}/>
-        <Route path="product" element={<ProductCard/>}/>
         <Route path="404" element={<ErrorPage/>}/>
       </Routes>
       <Footer />

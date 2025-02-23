@@ -1,7 +1,21 @@
-import './producCard.css'
 import productCard from '../../assets/media/img/productCard.png'
+import { useEffect } from 'react'
+import { productsStore } from 'stores/products/productsStore'
+import { useParams } from 'react-router-dom'
+
+import './producCard.css'
+
 
 export const ProductCard = () => {
+
+    const {productId} = useParams()
+    
+
+    useEffect(()=>{
+        productsStore?.GetProductCard(productId)
+    }, [])
+
+
     return (
         <div className="product-card">
             <div className="container">
@@ -15,7 +29,7 @@ export const ProductCard = () => {
                     <div className="product-card__info">
                         <div className="product-card__prices">
                             <span className='product__item__now-price'>500$</span>
-                            <span className='product__item__prev-price'>1000$</span>
+                            <span className='product__item__prev-price'>{productsStore?.selectedProductCard.price}$</span>
                             <span className='product__item__discount'>-7%</span>
                         </div>
                         <button className='product-card__btn'>В корзину</button>
