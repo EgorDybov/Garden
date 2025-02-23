@@ -20,8 +20,3 @@ class ProductsStore {
 
 export const productsStore = new ProductsStore()
 
-
-
-const obj = {
-    products: []
-}
