@@ -1,10 +1,10 @@
 import { action, makeObservable, observable, toJS } from "mobx"
-import { PRODUCTS_ALL_URL } from "../apiPoint"
+import { PRODUCTS_ALL_URL, PRODUCTS_URL } from "../apiPoint"
 import { IProduct } from "./types"
 
 class ProductsStore {
     @observable products: IProduct[] = []
-    @observable selectedProductCard: any = {}
+    @observable selectedProductCard: IProduct | null = null
 
     constructor(){
         makeObservable(this)
@@ -12,6 +12,10 @@ class ProductsStore {
 
     @action setProducts(value: IProduct[]) {
         this.products = value
+    }
+
+    @action setSelectedProductCard(value: IProduct | null) {
+        this.selectedProductCard = value
     }
 
     GetAllProducts = async () => {
@@ -23,8 +27,14 @@ class ProductsStore {
        }
     }
 
-    GetProductCard = async (dsgvdfg: string) => {
-        //...
+    GetProductCard = async (productId: string | undefined ) => {
+       if(productId) {
+        const responce = await fetch(PRODUCTS_URL + '/' + productId)
+        if(responce.ok && responce.status === 200) {
+            const data = await responce.json()
+            this.setSelectedProductCard(data[0])
+        }
+       }
     }
 
 }

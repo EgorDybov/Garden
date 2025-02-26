@@ -8,7 +8,7 @@ import { Footer } from "./components/footer/Footer";
 import "./App.css";
 import { Products } from "./pages/products/Products";
 import { Cart } from "./pages/cart/Cart";
-import { ProductCard } from "./components/productCard/ProductCard";
+import { ProductCard } from "./pages/productCard/ProductCard";
 import { ErrorPage } from "./pages/ErrorPage/ErrorPage";
 import { Mapty } from "./components/map/Map";
 

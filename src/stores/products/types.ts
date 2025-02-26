@@ -10,4 +10,4 @@ export interface IProduct {
     updatedAt: string
 }
 
-type IType = number | null
+export type IType = number | null
