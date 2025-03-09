@@ -8,9 +8,11 @@
 .nav__link {
     color: #252525;
     text-decoration: none;
+    font-weight: 600;
     
 }
 
 .active-link {
     color: #379634;
 }
+

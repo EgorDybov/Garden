@@ -1,19 +1,43 @@
-import { Saleitem } from "../../components/saleItem/SaleItem"
+
+import { useEffect, useState } from 'react'
+
+import { productsStore } from '../../stores/products/productsStore'
+import { IProduct } from '../../stores/products/types'
+import { Product } from '../../components/product/Product'
 
 import './Sales.css'
+import { observer } from 'mobx-react'
 
-export const  Sales = () => {
+export const  Sales = observer(() => {
+
+    const [products, setProducts] = useState<IProduct[]>([])
+
+    useEffect(() => {
+        productsStore.GetAllProducts().then(data => {
+            // 1. Найти все элементы со скидкой
+            // 2. Из этого массива достать 4 штуки
+                const discountProducts = data.filter((item) => {
+                    return !!item.discont_price
+                })
+
+                const randomProducts = discountProducts
+                setProducts(randomProducts)
+                
+            })
+    }, [])
+    
+
     return (
         <section className="sales">
             <div className="container">
                 <div className="sales__wrapper">
-                    <div className="sales__title">
-                        <h2>Скидки</h2>
+                    <div>
+                        <h2 className='sales__title'>Скидки</h2>
                     </div>
                     <div className="sales__items">
                         {
-                            new Array(4).fill('').map(() => {
-                                return <Saleitem />
+                            products.map((product) => {
+                                return <Product {...product}/>
                             })
                         }
                     </div>
@@ -22,4 +46,4 @@ export const  Sales = () => {
             </div>
         </section>
     )
-}
+})

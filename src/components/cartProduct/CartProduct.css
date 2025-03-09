@@ -17,6 +17,10 @@
 .cartProduct__left {
     display: flex;
     gap: 20px;
+
+    img {
+        width: 318px;
+    }
 }
 
 .cartProduct__left__counter {
@@ -59,5 +63,8 @@
 
 .cartProduct_delete-item {
     cursor: pointer;
-    height: 24px;
+    img {
+        width: 24px;
+    }
+    
 }

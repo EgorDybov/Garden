@@ -5,8 +5,13 @@ import { CartForm } from "../../components/cartForm/CartForm"
 import arrow from '../../assets/media/icons/chevron_right.svg'
 
 import './Cart.css'
+import { cartStore } from "../../stores/cartStore/cartStore"
+import { observer } from "mobx-react"
 
-export const Cart = () => {
+export const Cart = observer(() => {
+
+    console.log(cartStore.products);
+    
     return (
         <div className="cart">
             <div className="container">
@@ -19,15 +24,16 @@ export const Cart = () => {
                             <Link to={'/cart'} style={{fontWeight: 500}}> Корзина</Link>
                         </div>
                         <div className="">
-                            <Link to={'/categories'} className="cart__navigation__return-arrow">Вернуться в магазин <img src={arrow} alt="" /></Link>
+                            <Link to={'/products'} className="cart__navigation__return-arrow">Вернуться в магазин <img src={arrow} alt="" /></Link>
                         </div>
                     </div>
                     <div className="divider"></div>
                     <div style={{display: 'flex', justifyContent:'space-between'}}>
                         <div >
-                            <CartProduct/>
-                            <CartProduct/>
-                            <CartProduct/>
+                            {cartStore.products.map((product) => {
+                                return <CartProduct {...product} key={product.id}/>
+                            })}
+                            
                         </div>
                         <CartForm/>
                     </div>
@@ -37,4 +43,4 @@ export const Cart = () => {
             </div>
         </div>
     )
-}
+})

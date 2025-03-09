@@ -23,8 +23,9 @@ class ProductsStore {
        if(response.ok && response.status === 200){
         const data = await response.json()
         this.setProducts(data)
-        console.log(toJS(this.products));
+        return data
        }
+       return []
     }
 
     GetProductCard = async (productId: string | undefined ) => {

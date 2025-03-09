@@ -1,0 +1,28 @@
+.random-categories__wrapper {
+    margin-top: 80px;
+    background-image: url('../../assets/media/img/backgroundbanner.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 40px 0;
+    display: flex;
+    align-items: center;
+}
+
+.random-categories__cards {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    color: white
+}
+
+.random-categories__title {
+    margin-top: 40px;
+    color: white;
+    font-weight: 600
+}
+
+.sales__wrapper {
+    margin-top: 80px;
+}

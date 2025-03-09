@@ -5,8 +5,18 @@
     margin-top: 80px;
 }
 
+.product-card__info {
+    max-width: 425px;
+}
+
+.divider {
+    max-width: 825px;
+}
+
 .product-card__img {
     margin-top: 40px;
+    width: 700px;
+    height: 700px;
 }
 
 .product-card__btn {
@@ -24,6 +34,13 @@
 .product-card__btn:hover {
     background-color: #379634;
     color: #fff;
+}
+
+.return__btn {
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    font-weight: 500;
 }
 
 

@@ -6,5 +6,11 @@
     margin-top: 40px;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 20px;
     align-items: center;
+}
+
+.sales__title {
+    font-size: 36px;
 }

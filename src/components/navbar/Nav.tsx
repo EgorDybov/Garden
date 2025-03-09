@@ -1,23 +1,42 @@
 import { INav } from "./types"
-import { useState } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 import './Nav.css'
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
+import { navStore } from "../../stores/navStore/NavStore"
+import { observer } from "mobx-react"
 
-export const Nav = ({items}: INav) => {
+export const Nav = observer(({items}: INav) => {
 
-    const [linkIndex, setLinkIndex] = useState(0)
+    // const [linkIndex, setLinkIndex] = useState(0)
 
-    const handleClick = (index: any) => {
-        setLinkIndex(index)
-    }
+    const {pathname} = useLocation()
+
+
+    useEffect(()=>{
+         navStore.setActiveLink(pathname)
+    }, [pathname])
+
+
+    const className = (path: string) => {
+        const link = !path.includes('/') ? '/'+path : path
+        return navStore.activeLink === link ? 'nav__link active-link': ''   
+     }
+    
+
+    
+
+
+  
 
     return (
         <nav>
             <ul className="nav__links">
                 {items.map((item, index) => {
-                    return <Link to={item.path} onClick={() => handleClick(index)} key={index} className={linkIndex === index ? 'nav__link active-link': ''}>{item.name}</Link>
+                    return <Link to={item.path}
+                        key={index}
+                        className={className(item.path)}>{item.name}</Link>
                 })}
             </ul>
         </nav>
     )
-}
+}) 
