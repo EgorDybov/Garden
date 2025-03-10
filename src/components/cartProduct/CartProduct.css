@@ -32,6 +32,10 @@
     justify-content: space-between;
     border-radius: 100px;
     height: 40px;
+
+    .plus, .minus {
+        width: 24px;
+    }
 }
 
 .cartProduct__left__desc {
@@ -52,7 +56,7 @@
 }
 
 .sale__item__now-price {
-    font-size: 20px;
+    font-size: 40px;
     font-weight: 600;
 }
 
@@ -63,8 +67,10 @@
 
 .cartProduct_delete-item {
     cursor: pointer;
+    height: 24px;
     img {
         width: 24px;
     }
     
 }
+
