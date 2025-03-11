@@ -35,7 +35,7 @@ export const Product = ({price, discont_price, image, title, id, description}: I
             discont_price,
             image
         }
-        cartStore.setProducts(someProduct)
+        cartStore.addProductToCart(someProduct)
     }
 
     return (

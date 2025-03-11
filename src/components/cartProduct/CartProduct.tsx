@@ -9,8 +9,12 @@ import { BASE_URL } from '../../stores/apiPoint'
 import { cartStore } from '../../stores/cartStore/cartStore'
 
 import './CartProduct.css'
+import { observer } from 'mobx-react'
 
-export const CartProduct = ({id, count, price, title, discont_price, image}: ICartProduct) => {
+export const CartProduct = observer(({id, count, price, title, discont_price, image}: ICartProduct) => {
+
+    console.log(count);
+    
 
     const scr = useMemo(() => {
         return BASE_URL + image
@@ -19,11 +23,11 @@ export const CartProduct = ({id, count, price, title, discont_price, image}: ICa
 
 
     const increment = () => {
-        cartStore.setProducts({id})
+        cartStore.incrementProduct(id)
     }
 
     const decrement = () => {
-        cartStore.removeProduct(id)
+        cartStore.decrementProduct(id)
     }
 
     const handleDelete = () => {
@@ -65,4 +69,4 @@ export const CartProduct = ({id, count, price, title, discont_price, image}: ICa
 
         </div>
     )
-}
+})
