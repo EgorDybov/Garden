@@ -8,8 +8,10 @@ import { ICartProduct } from '../../stores/cartStore/types'
 import { BASE_URL } from '../../stores/apiPoint'
 import { cartStore } from '../../stores/cartStore/cartStore'
 
+
 import './CartProduct.css'
 import { observer } from 'mobx-react'
+import { DeleteOutlined } from '@ant-design/icons'
 
 export const CartProduct = observer(({id, count, price, title, discont_price, image}: ICartProduct) => {
 
@@ -64,7 +66,7 @@ export const CartProduct = observer(({id, count, price, title, discont_price, im
                 </div>
             </div>
             <button onClick={handleDelete} className="cartProduct_delete-item">
-                <img className='' src={closeIcon} alt="delete" />
+                <DeleteOutlined style={{fontSize: 24}}/>
             </button>
 
         </div>

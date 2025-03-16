@@ -67,10 +67,17 @@
 
 .cartProduct_delete-item {
     cursor: pointer;
-    height: 24px;
-    img {
-        width: 24px;
-    }
-    
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: #eff3f6;
+    border-radius: 5px;
+    height: 33px;
+    padding: 5px;
+    transition: background-color ease-in 0.2s;
+}
+
+.cartProduct_delete-item:hover {
+    background-color: #96a3ae;
 }
 

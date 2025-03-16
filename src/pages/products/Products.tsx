@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { useLocation, useParams } from "react-router-dom"
 import { observer } from "mobx-react"
 
@@ -9,6 +9,8 @@ import { IProduct } from "../../stores/products/types"
 import { categoriesStore } from "../../stores/categories/categoriesStore"
 
 import './Products.css'
+
+import { filterStore } from "../../stores/filterStore/filterstore"
 
 export const Products = observer(() => {
 
@@ -40,6 +42,15 @@ export const Products = observer(() => {
             })
         }
     }, [categoryId, pathname])
+
+    useEffect(() => {
+       const t = productsStore.setFilterProducts(products, {by: 'fromAndTo', value: filterStore.fromAndTo})
+       setProducts(t)
+    }, [filterStore.fromAndTo])
+
+
+
+    
 
 
 

@@ -38,6 +38,43 @@ class ProductsStore {
        }
     }
 
+    @action setFilterProducts(products: IProduct[],  dataForFilter): IProduct[]{
+
+        const filteredProducts = []
+
+
+        if(dataForFilter.by === 'fromAndTo'){
+
+            const temp = products.filter(product => {
+
+
+                return( product.discont_price 
+                        ? product.discont_price >= dataForFilter.value.from
+                        : product.price >= dataForFilter.value.from)
+                    && 
+                    (product.discont_price 
+                        ? product.discont_price <= dataForFilter.value.to
+                        : product.price <= dataForFilter.value.to)
+
+            })
+
+            console.log('temp', temp);
+            
+
+            filteredProducts.push(...temp)
+        } else if(dataForFilter.by === 'checkbox') {
+            //...
+        } else {
+            filteredProducts.push(...products)
+        }
+
+
+        console.log(filteredProducts);
+        
+
+        return filteredProducts
+    }
+
 }
 
 export const productsStore = new ProductsStore()

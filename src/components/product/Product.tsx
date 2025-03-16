@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Typography } from 'antd'
 
@@ -14,6 +14,8 @@ interface IProductProps extends IProduct {}
 
 
 export const Product = ({price, discont_price, image, title, id, description}: IProductProps) => {
+
+    const [add, setAdd] = useState(true)
 
     const src = useMemo(() => {
         return BASE_URL + image
@@ -36,7 +38,9 @@ export const Product = ({price, discont_price, image, title, id, description}: I
             image
         }
         cartStore.addProductToCart(someProduct)
+        setAdd(false)
     }
+
 
     return (
         <div className="product">
@@ -50,7 +54,17 @@ export const Product = ({price, discont_price, image, title, id, description}: I
                     {sale && <span className='product__item__discount'>{sale}%</span>}
                 </div>
                 <Typography.Paragraph className='product__item__title' ellipsis>{title}</Typography.Paragraph>
-                <Button type='primary' className='product__btn' onClick={addToCart}>В корзину</Button>
+                {add 
+                ? <Button type='primary' className='product__btn' onClick={addToCart}>В корзину</Button>
+                : <div style={{display: 'flex', width: '100%', gap:10}}>
+                    <Link to={'/cart'} style={{ flex: 1 }}><Button type='primary' className='moveToCartBtn'>В корзине</Button></Link>
+                    <div style={{display: 'flex', alignItems: 'center', gap:10}}>
+                        <Button className='setCountBtn'>-</Button>
+                        <p>1</p>
+                        <Button className='setCountBtn'>+</Button>
+                    </div>
+                </div>}
+               
             </div>
         </div>
     )
